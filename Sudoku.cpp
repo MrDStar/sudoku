@@ -26,11 +26,9 @@ int Sudoku::firstFree() {
 	for(int i=0; i<9; i++) for(int j=0; j<9; j++) {
 		if(!puzzle[i][j]) return 10*i+j;
 	}
+	return -1;
 }
 
 bool Sudoku::isSolved() {
-	for(int i=0; i<9; i++) for(int j=0; j<9; j++) {
-		if(!puzzle[i][j]) return false;
-	}
-	return true;
+	return firstFree == -1;
 }
