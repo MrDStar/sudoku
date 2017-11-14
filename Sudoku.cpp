@@ -43,7 +43,51 @@ int Sudoku::countNonzero() {
 bool Sudoku::setValue(int pos, int value) { // insert new value and check validity
 	int x = pos / 10;
 	int y = pos % 10;
-	if(!puzzle[x][y]) puzzle[x][y] = value;
+	// Set value
+	puzzle[x][y] = value;
+	// Determine boundaries of sub block
 	int subMinX,subMaxX,subMinY,subMaxY;
-
+	switch(x%3) {
+		case 0 :
+			subMinX = x;
+			subMaxX = x+2;
+		case 1 :
+			subMinX = x-1;
+			subMaxX = x+1;
+		case 2:
+			subMinX = x-2;
+			subMaxX = x;
+	}
+	switch(y%3) {
+		case 0:
+			subMinY = y;
+			subMaxY = y+2;
+		case 1:
+			subMinY = y-1;
+			subMaxY = y+1;
+		case 2:
+		subMinY = y-2;
+		subMaxY = y;
+	}
+	// Check sub block
+	for(int i=subMinX; i<=subMaxX; i++) {
+		for(int j=subMinY; j<=subMaxY; j++) {
+			if( (i!=x || j != y) && puzzle[i][j] == puzzle[x][y] ) {
+				return false;
+			}
+		}
+	}
+	// Check column
+	for(int i=0; i<9; i++) {
+		if(y != i && puzzle[x][i] == puzzle[x][y] ) {
+		  return false;
+		}
+	}
+	// Check row
+	for(int i=0; i<9; i++) {
+		if(x != i && puzzle[i][y] == puzzle[x][y] ) {
+		  return false;
+		}
+	}
+	return true;
 }

@@ -19,6 +19,17 @@ int main() {
 	while(!L.empty()) {
 		Sudoku t = L.front();
 		L.pop_front();
-		t.printSudoku();
+		int firstFree = t.firstFree();
+		for(int i=1; i<=9; i++) {
+			if(t.setValue(firstFree,i)) {
+				std::cout << t.firstFree() << std::endl;
+				if(t.firstFree() == -1) {
+					t.printSudoku();
+				}
+				else {
+					L.push_front(t);
+				}
+			}
+		}
 	}
 }
