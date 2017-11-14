@@ -19,7 +19,7 @@ void Sudoku::printSudoku() {
 		}
 		cout << endl;
 	}
-	cout << endl;
+	cout << endl << endl;
 }
 
 int Sudoku::firstFree() {
@@ -30,5 +30,23 @@ int Sudoku::firstFree() {
 }
 
 bool Sudoku::isSolved() {
-	return firstFree == -1;
+	return firstFree() == -1;
+}
+
+int Sudoku::countNonzero() {
+	int count = 0;
+	for(int i=0; i<9; i++) for(int j=0; j<9; j++) {
+		if(puzzle[i][j]) count++;
+	}
+	return count;
+}
+
+void Sudoku::setValue(int pos, int value) {
+	int x = pos / 10;
+	int y = pos % 10;
+	if(!puzzle[x][y]) puzzle[x][y] = value;
+}
+
+bool Sudoku::isValid() {
+	
 }

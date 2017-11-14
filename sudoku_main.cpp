@@ -12,7 +12,8 @@ int main() {
 								 {0,0,0,4,7,0,1,2,0},
 								 {1,0,0,0,0,2,6,8,0},
 								 {2,0,0,0,1,0,0,0,5}};
-	Sudoku S(A);
-	S.printSudoku();
-	cout << S.firstFree()<<endl;
+
+	SudokuStack S;
+	Sudoku s(A);
+
 }
