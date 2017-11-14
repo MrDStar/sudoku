@@ -20,16 +20,15 @@ int main() {
 		Sudoku t = L.front();
 		L.pop_front();
 		int firstFree = t.firstFree();
-		for(int i=1; i<=9; i++) {
-			if(t.setValue(firstFree,i)) {
-				std::cout << t.firstFree() << std::endl;
-				if(t.firstFree() == -1) {
-					t.printSudoku();
-				}
-				else {
+		if (firstFree != -1){
+			for(int i=1; i<=9; i++) {
+				if(t.setValue(firstFree,i)) {
 					L.push_front(t);
 				}
 			}
+		}
+		else {
+			t.printSudoku();
 		}
 	}
 }
