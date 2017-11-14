@@ -1,6 +1,6 @@
 #include <iostream>
+#include <list>
 #include "Sudoku.h"
-using namespace std;
 
 int main() {
 	int A[9][9] = {{7,0,0,0,4,0,0,0,9},
@@ -13,7 +13,12 @@ int main() {
 								 {1,0,0,0,0,2,6,8,0},
 								 {2,0,0,0,1,0,0,0,5}};
 
-	SudokuStack S;
-	Sudoku s(A);
-
+  Sudoku initial(A);
+	std::list<Sudoku> L = {};
+	L.push_front(initial);
+	while(!L.empty()) {
+		Sudoku t = L.front();
+		L.pop_front();
+		t.printSudoku();
+	}
 }

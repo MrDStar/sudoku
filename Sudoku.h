@@ -1,7 +1,6 @@
 class Sudoku {
 	private:
 		int puzzle[9][9];
-		Sudoku* next;
 	public:
 		Sudoku(int [9][9]);
 		bool isSolved();
@@ -9,10 +8,5 @@ class Sudoku {
 		void printSudoku();
 		int firstFree();
 		int countNonzero();
-		void setValue(int,int);
+		bool setValue(int,int);
 };
-
-class SudokuStack {
-	public:
-		Sudoku* first;
-}

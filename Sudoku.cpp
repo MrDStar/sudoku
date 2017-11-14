@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Sudoku.h"
-using namespace std;
 
 
 Sudoku::Sudoku(int A[9][9]) {
@@ -11,15 +10,15 @@ void Sudoku::printSudoku() {
 	for(int i=0; i<9; i++) {
 		for(int j=0; j<9; j++) {
 			if(puzzle[i][j]) {
-				cout << puzzle[i][j] << " ";
+				std::cout << puzzle[i][j] << " ";
 			}
 			else {
-				cout << "  ";
+				std::cout << "  ";
 			}
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
 }
 
 int Sudoku::firstFree() {
@@ -41,12 +40,10 @@ int Sudoku::countNonzero() {
 	return count;
 }
 
-void Sudoku::setValue(int pos, int value) {
+bool Sudoku::setValue(int pos, int value) { // insert new value and check validity
 	int x = pos / 10;
 	int y = pos % 10;
 	if(!puzzle[x][y]) puzzle[x][y] = value;
-}
+	int subMinX,subMaxX,subMinY,subMaxY;
 
-bool Sudoku::isValid() {
-	
 }
