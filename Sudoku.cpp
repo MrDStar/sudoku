@@ -7,18 +7,33 @@ Sudoku::Sudoku(int A[9][9]) {
 }
 
 void Sudoku::printSudoku() {
+	std::cout << "╔═══════╤═══════╤═══════╗" << std::endl;
 	for(int i=0; i<9; i++) {
+		std::cout << "║ ";
 		for(int j=0; j<9; j++) {
 			if(puzzle[i][j]) {
-				std::cout << puzzle[i][j] << " ";
+				std::cout << puzzle[i][j];
 			}
 			else {
-				std::cout << "  ";
+				std::cout << " ";
+			}
+			if(j == 2 || j == 5) {
+				std::cout << " │ ";
+			}
+			else if(j == 8) {
+				std::cout << " ║";
+			}
+			else {
+				std::cout << " ";
 			}
 		}
 		std::cout << std::endl;
+		if(i == 2 || i == 5) {
+			std::cout << "╟───────┼───────┼───────╢" << std::endl;
+		}
 	}
-	std::cout << std::endl << std::endl;
+	std::cout << "╚═══════╧═══════╧═══════╝" << std::endl;
+
 }
 
 int Sudoku::firstFree() {
