@@ -6,6 +6,7 @@ class Sudoku {
 		bool isSolved();
 		bool isValid();
 		void printSudoku();
+		void printSudokuFile();
 		int firstFree();
 		int countNonzero();
 		bool setValue(int,int);

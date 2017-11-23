@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Sudoku.h"
 
 
@@ -35,6 +36,39 @@ void Sudoku::printSudoku() {
 	std::cout << "╚═══════╧═══════╧═══════╝" << std::endl;
 
 }
+
+void Sudoku::printSudokuFile() {
+	std::ofstream outfile;
+	outfile.open("sudoku.txt",std::ios::app);
+	outfile << "╔═══════╤═══════╤═══════╗\n";
+       	for(int i=0; i<9; i++) {
+		outfile << "║ ";
+		for(int j=0; j<9; j++) {
+			if(puzzle[i][j]) {
+				outfile << (puzzle[i][j]);
+			}
+			else {
+				outfile << " ";
+			}
+			if(j == 2 || j == 5) {
+				outfile << " │ ";
+			}
+			else if(j == 8) {
+				outfile << " ║";
+			}
+			else {
+				outfile << " ";
+			}
+		}
+		outfile << "\n";
+		if(i == 2 || i == 5) {
+			outfile << "╟───────┼───────┼───────╢\n";
+		}
+	}
+	outfile << "╚═══════╧═══════╧═══════╝\n\n";
+	outfile.close();
+}
+
 
 int Sudoku::firstFree() {
 	for(int i=0; i<9; i++) for(int j=0; j<9; j++) {
