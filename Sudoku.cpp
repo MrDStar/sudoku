@@ -96,7 +96,7 @@ bool Sudoku::setValue(int pos, int value) { // insert new value and check validi
 	puzzle[x][y] = value;
 	// Determine boundaries of sub block
 	int subMinX,subMaxX,subMinY,subMaxY;
-	switch(x%3) {
+	/*switch(x%3) {
 		case 0 :
 			subMinX = x;
 			subMaxX = x+2;
@@ -123,7 +123,13 @@ bool Sudoku::setValue(int pos, int value) { // insert new value and check validi
 		subMinY = y-2;
 		subMaxY = y;
 		break;
-	}
+	}*/
+	
+	subMinX = x - x%3;
+	subMaxX = subMinX + 2;
+	subMinY = y - y%3;
+	subMaxY = subMinY + 2;
+
 	// Check sub block
 	for(int i=subMinX; i<=subMaxX; i++) {
 		for(int j=subMinY; j<=subMaxY; j++) {

@@ -47,7 +47,9 @@ int main() {
 		}
 		else {
 			t.printSudokuFile();
-			solutioncount++;
+			if(solutioncount++ == 1000000) {
+				break;
+			}
 		}
 	}
 	outfile.open("sudoku.txt", std::ios::app);
